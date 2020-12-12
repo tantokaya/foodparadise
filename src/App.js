@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import Navbar from "./components/Navbar";
+import Footer from './components/Footer/Footer';
+import Home from './pages/Home';
+import City from './pages/City';
+import RestaurantDetail from './pages/RestaurantDetail';
+import { BrowserRouter as Router, Route} from "react-router-dom";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class App extends Component {
+  
+  render() {
+    return (
+      <Router>
+        <Navbar />
+        <Route path="/" exact component={Home}/>
+        <Route path="/city/:city_id" component={City}/>
+        <Route path="/restaurant/:restaurant_id" component={RestaurantDetail}/>
+        <Footer />
+      </Router>
+    );
+  }
 }
 
 export default App;
